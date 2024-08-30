@@ -114,7 +114,7 @@ def _deb_package_index_impl(rctx):
                 src = '"@%s//:data"' % repo_name,
                 deps = ",\n        ".join([
                     '"//%s/%s"' % (dep["name"], package["arch"])
-                    for dep in package["dependencies"]
+                    for dep in package["dependencies"] if dep["name"] != package["name"]
                 ]),
                 urls = [package["url"]],
                 name = package["name"],
